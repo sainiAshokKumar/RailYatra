@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket</title>
+    <link rel="stylesheet" href="s.css">
+    <style>
+        body{
+            text-align: center;
+            position: relative;
+            background-image: url('Images/denis-chick-mHqIs22M2Kw-unsplash.jpg');
+            height: 100vh;
+            background-position: center;
+            background-size:contain;
+        }
+         #container{
+            background-color: #2c3531af;
+            position: absolute;
+            left: 20px;
+            top:100px;
+            height: 62vh;
+            padding: 20px;
+        } 
+        h1{
+            background-color: rgba(255, 255, 255, 0.539);
+        }
+        h2{
+            background-color: rgba(255, 255, 255, 0.605);
+        }
+        #train{
+            background-color: rgba(255, 255, 255, 0.8);
+            color: blue;
+            font-weight: 900;
+        }
+        #train span{
+            margin-left: 0px;
+        }
+        .input-fields{
+            padding: 10px;
+            font-size: 20px;
+            background-color: rgba(255, 255, 255, 0.605);
+        }
+        select{
+            padding: 10px;
+            margin-left: 5px;
+        }
+        #seat{
+            margin-top: 17px;
+            padding: 10px;
+        }
+        #running{
+            background-color: rgba(255, 255, 255, 0.605);
+            width: 30vw;
+            overflow: auto;
+            position: absolute;
+            left: 60%;
+            top:25%;
+            font-weight: Bold;
+            text-align: center;
+            border-radius: 30%;
+            display: none;
+        }
+        #running h3{
+            /* margin-left: -125px; */
+            color:rgb(49, 10, 247);
+            background-color: rgba(250, 235, 215, 0.292);
+            font-size: 30px;
+        }
+        #running p{
+            /* margin-left: 50px; */
+            background-color: rgba(250, 235, 215, 0.544);
+            font-size: 20px;
+        }
+        .child{
+            margin: 20px;
+        }
+        .time{
+            margin-left: 50px;
+        }
+        #sub{
+            width:15vw;
+            border-color: #116466;
+            color: white;
+            background-color: #116466;
+            border-radius: 20px;
+            margin-top:20px;
+            height: 8vh;
+            outline: 0px;
+        }
+        .book:hover{
+            background-color: #11656684;
+        }
+        .book{
+            background-color: #116466;
+            outline: 0px;
+            padding: 10px;
+            color: white;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+            input{
+            margin-top: 6px;
+            display: block;
+            width:20vw;
+            height:4vh;
+            border-radius: 20px;
+            outline: none;
+            border-width: 0;
+            text-align: center;
+        }
+        h3,p{
+            display: inline;
+        }
+        #train h3{
+            margin-left: -12px;
+        }
+        #sub:hover{
+            box-shadow: 2px 2px 20px 10px #116466;
+            box-shadow: 2px 2px 20px 10px #116466;
+            box-shadow: 2px 2px 20px 10px #116466;
+            box-shadow: -2px -2px 20px 10px #116466;
+            box-shadow: -2px -2px 20px 10px #116466;
+            box-shadow: -2px -2px 20px 10px #116466;
+            border-radius: 40px;
+            font-weight: bold;
+            transform: perspective(300px) translate3d(0px,0px,50px);
+        }
+    </style>
+</head>
+
+<body>
+   <h1> Train Smart Ticketing System</h1>
+   <div id="train">
+   </div>
+   <div id="container">
+    <div class="input-fields">
+    <label>Source</label>
+    <!-- <input type="text" id="source"> -->
+    <input type="text" list="search" id="source">
+            <datalist id="search">
+                <option value="Jodhpur"> </option>
+                <option value="Kota"></option>
+                <option value="Jaipur"></option>
+                <option value="Delhi"></option>
+            </datalist>
+    </div>
+    <div class="input-fields">
+    <label>Destination</label>
+    <input type="text" list="search" id="destination">
+    <datalist id="search">
+        <option value="Jodhpur"> </option>
+        <option value="Kota"></option>
+        <option value="Jaipur"></option>
+        <option value="Delhi"></option>
+    </datalist>
+    <div id="seat">
+    <label>Seat Category</label>
+    <select id="seat1">
+        <optgroup label="Seat Category">
+        <option value="Ac"> Ac </option>
+        <option value="Sleeper"> Sleeper</option>
+        </optgroup>
+    </select>
+    </div>
+    </div>
+    <div class="input-fields">
+    <label> Date </label>
+    <input type="date" id="date">
+    <button id="sub"> Book ticket </button>
+    </div>
+   </div>
+   <div id="running">
+        <!-- <h2>Your Journey will be</h2> <br>
+        <div class="child">
+            <p>Hyderabad </p>
+            <p class="time">12:00 AM</p>
+        </div>
+        <h3 class="child"> Sleeper</h3>
+        <div class="child">
+            <p>Pune</p>
+            <p class="time">4:00 PM</p>
+        </div>
+        <h3 class="child"> Ac</h3>
+        <div class="child">
+            <p>Delhi</p>
+            <p class="time">08:00 PM</p>
+        </div>
+         -->
+
+        <!-- <h3> Sleeper</h3> <p> Hyderabad to Pune</p><br><br><br><br><br><br> -->
+        <!-- <h3> Ac</h3> <p> Pune to Delhi</p> -->
+   </div>
+    <script defer type="module" > 
+    
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+    import { getDatabase,get,update,set,child,ref,DataSnapshot } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js";
+
+    // import { initializeApp } from "firebase/app";
+    // import { getDatabase,get,set,child,ref, DataSnapshot } from "firebase/database";
+    // TODO: Replace the following with your app's Firebase project configuration
+    // See: https://firebase.google.com/docs/web/learn-more#config-object
+    const firebaseConfig = {
+    // ...
+    // The value of `databaseURL` depends on the location of the database
+    databaseURL: "https://practice-33c66-default-rtdb.firebaseio.com/",
+    };
+
+    // let source=document.getElementById('source');
+    // let dest=document.getElementById('destination');
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // Initialize Realtime Database and get a reference to the service
+    const db = getDatabase(app);
+    const dbref=ref(db);
+    let name;
+    let count=1;
+    let str;
+    let arr=[];
+    let reserved=[0,0,0,0,0];
+   let train1=["Hyderabad","Chennai","Banglore","Panji","Pune","Mumbai","Ahmedabad","Jodhpur",
+              "Chandigarh","Delhi","Gurgaon","Noida","Kanpur","Lucknow","Patna","Ranchi","Raipur","Kolkata"];
+    let pair=[0,0];
+    let ac="Ac";
+    let bs="BookedSeat";
+    async function get_data(n,stri){
+        return new Promise(async function(resolve,reject) {
+      n=2;
+      await get(child(dbref,"/2"+"/"+stri+"/"+ac+"/")).then((snapshot)=>{
+       if(snapshot.exists()){
+            name=snapshot.val();
+            arr[n]=name.BookedSeat;
+            resolve(name.BookedSeat);
+       }
+        else{
+            console.log("No data Found");
+            resolve(6);
+        }
+        }).catch((error)=>{
+            console.log("nhi hua");
+            resolve(10);
+        }); 
+    });
+}
+    async  function set_values(x,y,seat_type){
+        return new Promise(async (resolve, reject) => {
+                for(let z=x;z<=y;++z)
+        
+                    {
+                        str=train1[z];
+                                update(ref(db,"/2"+"/"+str+"/"+seat_type+"/"),{
+                                    BookedSeat:arr[z]+1
+                                })
+                                .then((result)=>{
+                                resolve();
+                                })
+                                .catch((error)=>{
+                                });
+                 }
+            })
+}
+
+function solve(a,b){
+    let p1=a,p2=a,q1,q2;
+    for(let i=a;i<=b;++i)
+    {
+        q1=i;
+        for(let j=i;j<=b;++j)
+        {
+            if(arr[j]!=10)
+            q2=j;
+            else
+            break;
+        }
+       // console.log(q2,q1,p2,p1);
+        if(p2-p1<q2+1-q1)
+        {
+           // console.log("Working");
+            p2=q2+1;
+            p1=q1;
+        }
+    }
+   // console.log("Done");
+    pair[0]=p1;
+    pair[1]=p2;
+    if(pair[1]==b+1)
+    --pair[1];
+}
+
+  async function submit_form(){
+    console.log("Submit Form");
+    alert("good");
+    let source=document.getElementById('source');
+    let destination=document.getElementById('destination');
+    let seat=document.getElementById("seat1");
+  
+    console.log(source.value+" "+destination.value+" "+seat.value);
+  //  await set_values(1,4);
+    // for(let v=0;v<=17;++v)
+    // {
+    //     arr[v]=await get_data(v,train1[v]);
+    //     console.log(arr[v]);
+    // }
+    
+    //await set_values(1,4);
+    console.log(arr);
+    let a,b;
+    let seat_opp;
+    if(seat.value=="Ac")
+    seat_opp="Sleeper";
+    else
+    seat_opp="Ac";
+    for(let x=0;x<18;++x)
+    {
+        if(train1[x]==source.value)
+        a=x;
+        else
+        if(train1[x]==destination.value)
+        {
+            b=x;
+            break;
+        }
+    }
+    console.log(a,b);
+    await solve(a,b);
+    console.log(pair);
+    let elm=document.getElementById("running");
+    // elm.innerHTML="<h2>Your Journey will be</h2> <br><br><br>";
+    elm.style.display="block";
+    if(pair[0]!=a&&pair[1]==b)
+    {
+        // elm.innerHTML+="<h3>"+seat_opp+"</h3><p>&nbsp &nbsp "+train1[a]+" to "+train1[pair[0]]+"</p><br>";
+
+        // elm.innerHTML+="<h3>"+seat.value+"</h3><p>&nbsp &nbsp "+train1[pair[0]]+" to "+train1[b]+"</p>";
+
+        elm.innerHTML+='<h2>Your Journey will be</h2> <br><div class="child"><p>'+train1[a] +'</p><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><p class="time">12:00 AM</p></div><h3 class="child"> '+seat_opp+'</h3><div class="child"><p>'+train1[pair[0]]+'</p><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><p class="time">4:00 PM</p></div><h3 class="child"> '+seat.value+'</h3><div class="child"><p>'+train1[b]+'</p><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><p class="time">08:00 PM</p></div>';
+
+        elm.innerHTML+='<button id="book1" class="book"> Confirm Ticket </button>';
+        document.getElementById('book1').addEventListener('click',async function(){
+            await set_values(a,pair[0],seat_opp);
+            await set_values(pair[0],b,seat.value);
+            alert("Seat Sucessfully Booked");
+            location.reload();
+        });
+
+        // elm.innerHTML+="You have to travel in "+seat_opp+" from "+train1[a]+
+        // " to "+train1[pair[0]]+" .<br> And then from "+train1[pair[0]]+" to "+
+        // train1[b]+" in "+seat.value+".";
+    }
+    if(pair[0]==a&&pair[1]!=b)
+    {
+        // elm.innerHTML+="<h3>"+seat.value+"</h3><p>&nbsp &nbsp "+train1[a]+" to "+train1[pair[0]]+"</p><br>";
+
+        // elm.innerHTML+="<h3>"+seat_opp+"</h3><p>&nbsp &nbsp "+train1[pair[0]]+" to "+train1[b]+"</p>";
+
+        elm.innerHTML+='<h2>Your Journey will be</h2> <br><div class="child"><p>'+train1[a] +'</p><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><p class="time">12:00 AM</p></div><h3 class="child"> '+seat.value+'</h3><div class="child"><p>'+train1[pair[0]]+'</p><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><p class="time">4:00 PM</p></div><h3 class="child"> '+seat_opp+'</h3><div class="child"><p>'+train1[b]+'</p><!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><p class="time">08:00 PM</p></div>';
+        elm.innerHTML+='<button id="book3" class="book"> Confirm Ticket </button>';
+        document.getElementById('book3').addEventListener('click',async function(){
+            await set_values(a,pair[1],seat.value);
+            await set_values(pair[1],b,seat_opp);
+            alert("Seat Sucessfully Booked");
+            location.reload();
+        });
+        // elm.innerHTML+="You have to travel in "+seat.value+" from "+train1[a]+
+        // " to "+train1[pair[0]]+" .<br> And then from "+train1[pair[0]]+" to "+
+        // train1[b]+" in "+seat_opp+".";
+    }
+    if(pair[0]!=a&&pair[1]!=b)
+    {
+        elm.innerHTML+="<h3>"+seat_opp+"</h3><p>&nbsp &nbsp "+train1[a]+" to "+train1[pair[0]]+"</p><br>";
+
+        elm.innerHTML+="<h3>"+seat.value+"</h3><p>&nbsp &nbsp "+train1[pair[0]]+" to "+train1[pair[1]]+"</p><br>";
+
+        elm.innerHTML+="<h3>"+seat_opp+"</h3><p>&nbsp &nbsp "+train1[pair[1]]+" to "+train1[b]+"</p><br>";
+        elm.innerHTML+='<button id="book3" class="book"> Confirm Ticket </button>';
+
+        document.getElementById('book3').addEventListener('click',async function(){
+            await set_values(a,pair[0],seat_opp);
+            await set_values(pair[0],pair[1],seat.value);
+            await set_values(pair[1],b,seat_opp);
+            alert("Seat Sucessfully Booked");
+            location.reload();
+        });
+        // elm.innerHTML+="You have to travel in "+seat_opp+" from "+train1[a]+
+        // " to "+train1[pair[0]]+" .<br> And then from "+train1[pair[0]]+" to "+
+        // train1[pair[1]]+" in "+seat.value+".<br> And then form "+train1[pair[1]]+
+        // " to "+train1[b]+" in "+seat_opp+".";
+    }
+    if(pair[0]==a&&pair[1]==b)
+    {
+
+        elm.innerHTML+="<h3>"+seat.value+"</h3><p>&nbsp &nbsp "+train1[a]+" to "+train1[b]+"</p><br>";
+        set_values(a,b,seat.value);
+        alert("Seat Sucessfully Booked");
+        location.reload();
+
+        
+        // elm.innerHTML+="Sucessful, you have get your ticket from "+train1[a]+
+        // " to "+train1[b]+" in "+seat.value+".";
+    }
+    
+    // console.log(pair);
+    alert("Done");
+  }
+  let fill=document.getElementById("train");
+    for(let z=0;z<18;++z)
+    {
+        fill.innerHTML+='<span id="zero'+z+'">'+train1[z]+'=>&nbsp &nbsp &nbsp</spaan>';
+    }
+    for(let v=0;v<=17;++v)
+    {
+        arr[v]=await get_data(v,train1[v]);
+       // console.log(arr[v]);
+    }
+    console.log(arr);
+    for(let z=0;z<18;++z)
+    {
+        let t="zero"+z;
+        let color=document.getElementById(t);
+        if(arr[z]==10)
+        color.style.color="red";
+    }
+let b = document.getElementById("sub"); 
+b.addEventListener('click', () => {
+    submit_form(); 
+});
+
+</script>
+</body>
+</html>
